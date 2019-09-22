@@ -33,12 +33,14 @@ const App = () => {
   }
 
   const onClick = (key) => {
-    if (!clicked.includes(key)) {
+    if (clicked.includes(key)) {
+      badImgClicked();
+      setClicked([]);
+    } else {
       newImgClicked();
       shuffleCards();
       clicked.push(key);
-    } else {
-      badImgClicked()
+      console.log(clicked[clicked.length-1]);
     }
   }
 
@@ -63,12 +65,12 @@ const App = () => {
 
   const shuffleCards = () => {
     let arr = shuffle(cards);
-    setCards(arr);
+    return setCards(arr);
   };
 
   const cardsArr = [];
   images[topic].map((link, index) => {
-    return cardsArr.push(<Card onClick={onClick} link={link} idx={index} key={index}/>)
+    return cardsArr.push(<Card onClick={onClick} lastClicked={clicked[clicked.length-1]} link={link} idx={index} key={index}/>)
   });
 
   const [cards, setCards] = useState(cardsArr);

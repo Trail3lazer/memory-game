@@ -3,8 +3,12 @@ import './index.css';
 
 const Card = (props) => {
 
+    const click = function() {
+        props.onClick(props.idx)
+    }
+
     return(
-        <div onClick={props.onClick(props.idx)} role="img" aria-label="click item" className="click-item shake" style={{"backgroundImage": "url("+props.link+")"}} />
+        <div onClick={click} data-lastClicked={props.lastClicked} role="img" aria-label="click item" className="click-item shake" style={{"backgroundImage": "url("+props.link+")"}} />
     )
 }
 
