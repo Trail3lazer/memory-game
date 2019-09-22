@@ -13,7 +13,6 @@ const App = () => {
   const [topScore, setTopScore] = useState(0);
   const [correct, setCorrect] = useState(null);
   const [topic, setTopic] = useState("theOffice");
-  const [clicked, setClicked] = useState([]);
 
   function highScoreCheck() {
     if (topScore < score)
@@ -32,15 +31,12 @@ const App = () => {
     setScore(0);
   }
 
-  const onClick = (key) => {
-    if (clicked.includes(key)) {
+  const onClick = (alreadyPicked) => {
+    if (alreadyPicked === true) {
       badImgClicked();
-      setClicked([]);
     } else {
       newImgClicked();
       shuffleCards();
-      clicked.push(key);
-      console.log(clicked[clicked.length-1]);
     }
   }
 
@@ -70,7 +66,7 @@ const App = () => {
 
   const cardsArr = [];
   images[topic].map((link, index) => {
-    return cardsArr.push(<Card onClick={onClick} lastClicked={clicked[clicked.length-1]} link={link} idx={index} key={index}/>)
+    return cardsArr.push(<Card onClick={onClick} link={link} correct={} key={link}/>)
   });
 
   const [cards, setCards] = useState(cardsArr);

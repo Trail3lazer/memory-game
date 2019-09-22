@@ -2,9 +2,14 @@ import React from 'react';
 import './index.css';
 
 const Card = (props) => {
-
+    const [picked, setPicked] = useStae(false)
     const click = function() {
-        props.onClick(props.idx)
+        if (picked){
+            props.onClick(true);
+        }else{
+            props.onClick(false);
+            setPicked(true);
+        }
     }
 
     return(
