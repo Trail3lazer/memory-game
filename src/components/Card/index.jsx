@@ -1,19 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './index.css';
 
 const Card = (props) => {
-    const [picked, setPicked] = useStae(false)
+    const [picked, setPicked] = useState(false);
+
     const click = function() {
         if (picked){
-            props.onClick(true);
+            props.click(true);
         }else{
-            props.onClick(false);
+            props.click(false);
             setPicked(true);
         }
     }
 
     return(
-        <div onClick={click} data-lastClicked={props.lastClicked} role="img" aria-label="click item" className="click-item shake" style={{"backgroundImage": "url("+props.link+")"}} />
+        <div onClick={click} role="img" aria-label="click item" className="click-item" style={{"backgroundImage": "url("+props.link+")"}} />
     )
 }
 

@@ -12,17 +12,13 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [topScore, setTopScore] = useState(0);
   const [correct, setCorrect] = useState(null);
-  const [topic, setTopic] = useState("theOffice");
+  let [cards, setCards] = useState([]);
+  const [shuffle, setShuffle] = useState(false);
+  const [topic,] = useState("theOffice");
 
   function highScoreCheck() {
     if (topScore < score)
       setTopScore(score)
-  }
-
-  const newImgClicked = () => {
-    setCorrect(true);
-    setScore(score + 1);
-    highScoreCheck();
   }
 
   const badImgClicked = () => {
@@ -31,51 +27,38 @@ const App = () => {
     setScore(0);
   }
 
+  const newImgClicked = () => {
+    setCorrect(true);
+    setScore(score + 1);
+    highScoreCheck();
+  }
+
   const onClick = (alreadyPicked) => {
     if (alreadyPicked === true) {
       badImgClicked();
     } else {
       newImgClicked();
-      shuffleCards();
+      setShuffle(true);
     }
   }
 
-  function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+  function initCards() {
+    cards = [];
+    images[topic].map(function(link) {
+    return cards.push(<Card click={onClick} link={link} correct={correct} setCorrect={setCorrect} key={link} />)
+  });}
 
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
+  // function setCards(arr) {
+  //   cards = arr;
+  // };
 
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  };
-
-  const shuffleCards = () => {
-    let arr = shuffle(cards);
-    return setCards(arr);
-  };
-
-  const cardsArr = [];
-  images[topic].map((link, index) => {
-    return cardsArr.push(<Card onClick={onClick} link={link} correct={} key={link}/>)
-  });
-
-  const [cards, setCards] = useState(cardsArr);
+  initCards()
 
   return (
     <div>
       <Navbar correct={correct} score={score} topScore={topScore} />
       <Header />
-      <Deck cards={cards} />
+      <Deck setCards={setCards} cards={cards} shuffle={shuffle} setShuffle={setShuffle} />
       <Footer />
     </div>
   );
