@@ -4,9 +4,7 @@ import images from '../../resources/images/cardImages'
 import Card from '../Card'
 
 const Deck = (props) => {
-
   const [picked, setPicked] = useState([]);
-  const [topic,] = useState("theOffice");
   const [cards, setCards] = useState([]);
   const [shuffled, setShuffled] = useState(false);
 
@@ -15,10 +13,11 @@ const Deck = (props) => {
   }
 
   function initCards(images, topic) {
-    cards.length = 0;
+  if(images[topic]){
+      cards.length = 0;
     return images[topic].map(function (link) {
       return cards.push(link)
-    })
+    })}
   }
 
   function shuffle(array) {
@@ -42,7 +41,7 @@ const Deck = (props) => {
 
   function deckHandler(correct) {
     if (!correct) {
-      initCards(images, topic);
+      initCards(images, props.topic);
     }
     if (!shuffled) { setCards(shuffle(cards)); setShuffled(true) }
     return cards.map((link) => {
