@@ -6,13 +6,13 @@ const Dropdown = (props) => {
     const topicArr = [];
     const imageTopicMapper = () => {
         
-        for (let top in images) {
-            topicArr.push(top)
+        for (let topic in images) {
+            topicArr.push(topic)
         }
 
         return topicArr.map((topic) => {
             console.log(topic)
-            return <div className="dropdown-item" onClick={()=>{props.setTopic(topic); props.setCorrect(false)}} href="#" key={topic}>{topic.replace(/\_/g, " ")}</div>
+            return <div className="dropdown-item" onClick={()=>{props.setTopic(topic); props.setCorrect(false)}} href="#" key={topic}>{topic.replace(/_/g, " ")}</div>
         })
     }
 
