@@ -28,18 +28,9 @@ const Deck = (props) => {
     return props.cards;
   };
 
-  function shouldShuffle() {
-    if (props.shuffle){
-        props.setShuffle(false);
-        return shuffleCards();
-    } else {
-        return props.cards;
-    }
-  }
-
     return(
         <main className="container">
-            {shouldShuffle()}
+            {shuffleCards()}
         </main>
     )
 }

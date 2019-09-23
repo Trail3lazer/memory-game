@@ -12,9 +12,21 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [topScore, setTopScore] = useState(0);
   const [correct, setCorrect] = useState(null);
-  let [cards, setCards] = useState([]);
-  const [shuffle, setShuffle] = useState(false);
+  let cards = [];
+  const picked = [];
   const [topic,] = useState("theOffice");
+
+  function setCards(arr) {
+    cards = arr;
+  };
+
+  function resetPicked() {
+    picked.length = 0;
+  }
+
+  function pushPicked(link) {
+    picked.push(link)
+  }
 
   function highScoreCheck() {
     if (topScore < score)
@@ -25,6 +37,7 @@ const App = () => {
     setCorrect(false);
     highScoreCheck();
     setScore(0);
+    resetPicked();
   }
 
   const newImgClicked = () => {
@@ -38,27 +51,24 @@ const App = () => {
       badImgClicked();
     } else {
       newImgClicked();
-      setShuffle(true);
     }
   }
 
   function initCards() {
-    cards = [];
+    let cardsArr = [];
     images[topic].map(function(link) {
-    return cards.push(<Card click={onClick} link={link} correct={correct} setCorrect={setCorrect} key={link} />)
-  });}
+      return cardsArr.push(<Card click={onClick} link={link} picked={picked} pushPicked={pushPicked} resetPicked={resetPicked} key={link} />)
+    });
+    return cardsArr;
+  }
 
-  // function setCards(arr) {
-  //   cards = arr;
-  // };
-
-  initCards()
+  setCards(initCards());
 
   return (
     <div>
       <Navbar correct={correct} score={score} topScore={topScore} />
       <Header />
-      <Deck setCards={setCards} cards={cards} shuffle={shuffle} setShuffle={setShuffle} />
+      <Deck setCards={setCards} cards={cards} />
       <Footer />
     </div>
   );

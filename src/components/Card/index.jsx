@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './index.css';
 
 const Card = (props) => {
-    const [picked, setPicked] = useState(false);
 
     const click = function() {
-        if (picked){
+        if (props.picked.includes(props.link)){
             props.click(true);
+            props.setPicked();
         }else{
             props.click(false);
-            setPicked(true);
+            props.pushPicked(props.link);
         }
     }
 
