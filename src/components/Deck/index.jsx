@@ -50,7 +50,7 @@ const Deck = (props) => {
   }
 
   return (
-    <main className="container">
+    <main className={props.topic==='Marvel'? "container-fluid clearfix pb-5 px-5 mx-5" : 'container clearfix pb-5'}>
       {deckHandler(props.correct)}
     </main>
   )

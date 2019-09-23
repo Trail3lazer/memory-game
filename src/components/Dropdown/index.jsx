@@ -12,7 +12,7 @@ const Dropdown = (props) => {
 
         return topicArr.map((topic) => {
             console.log(topic)
-            return <div className="dropdown-item" onClick={()=>{props.setTopic(topic); props.setCorrect(false)}} href="#" key={topic}>{topic.replace(/_/g, " ")}</div>
+            return <div className="dropdown-item" onClick={()=>{props.setTopic(topic); props.setCorrect(null)}} href="#" key={topic}>{topic.replace(/_/g, " ")}</div>
         })
     }
 
@@ -20,7 +20,7 @@ const Dropdown = (props) => {
         <div className="container-fluid text-center">
             <div className="btn-group">
                 <button className="btn btn-dark btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {props.topic}
+                    {props.topic.replace(/_/g, " ")}
                 </button>
                 <div className="dropdown-menu">
                     {imageTopicMapper(props.topic)}
