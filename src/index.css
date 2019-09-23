@@ -65,7 +65,7 @@
 }
 
 .navbar {
-    background: #5133a4;
+    background: #00a9ff;
     min-height: 70px;
     position: fixed;
     width: 100%;
@@ -110,12 +110,12 @@
 }
 
 .header {
-    background-color: #2c323c;
-    background-image: url(/4de356f6ddb204ae047d4fe8bfadd690d4d0b2fe/00972/assets/images/geometry.svg);
+    background-image: url('/ripples.png');
     background-repeat: repeat;
-    color: #fff;
+    color: #1f274f;
     min-height: 400px;
     padding: 180px 20px;
+    padding-top: 240px;
     padding-bottom: 140px;
     text-align: center
 }
@@ -238,7 +238,7 @@
 }
 
 .footer {
-    background: #6956af;
+    background: #00a9ff;
     height: 100px;
     position: relative;
     color: #fff;
@@ -250,7 +250,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: #5138a1;
+    background: #1f274f;
     padding: 8px;
     font-weight: 600
 }
@@ -258,8 +258,8 @@
 .footer>.bottom>img {
     width: 20px;
     position: relative;
-    top: 3px;
-    left: 2px
+    top: -2px;
+    left: 10px
 }
 
 * {

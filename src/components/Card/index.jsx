@@ -3,18 +3,19 @@ import './index.css';
 
 const Card = (props) => {
 
-    const click = function() {
-        if (props.picked.includes(props.link)){
-            props.click(true);
-            props.setPicked();
+    const cardClick = function() {
+        props.setShuffled(false)
+        if (props.picked.includes( props.link )){
+            props.alreadyClicked(true);
+            props.setPicked([]);
         }else{
-            props.click(false);
+            props.alreadyClicked(false);
             props.pushPicked(props.link);
         }
     }
 
     return(
-        <div onClick={click} role="img" aria-label="click item" className="click-item" style={{"backgroundImage": "url("+props.link+")"}} />
+        <div onClick={cardClick} role="img" aria-label="click item" className="click-item" style={{"backgroundImage": "url("+props.link+")"}} />
     )
 }
 
