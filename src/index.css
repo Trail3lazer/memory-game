@@ -110,7 +110,7 @@
 }
 
 .header {
-    background-image: url('/ripples.png');
+    background-image: url('ripples.png');
     background-repeat: repeat;
     color: #1f274f;
     min-height: 400px;
