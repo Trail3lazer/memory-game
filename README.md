@@ -1,3 +1,6 @@
+Practice with React State and hooks. See how many characters you can select without choosing the same one twice. This app is built with dynamic catagories so new ones can easily be added.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
